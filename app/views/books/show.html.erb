@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @book.user_id %>
+  <strong>Author:</strong>
+  <%= @book.author %>
 </p>
 
 <p>
@@ -24,6 +24,12 @@
   <strong>Genre:</strong>
   <%= genres_to_string @book.genres %>
 </p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @book.user.name %>
+</p>
+
 
 <p>
   <strong>Draft:</strong>

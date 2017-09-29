@@ -11,14 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
+    <%= form.hidden_field :user_id, id: :book_user_id %>
+
+    <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, id: :book_title %>
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, id: :book_user_id %>
+    <%= form.label :author %>
+    <%= form.text_field :author, id: :book_author %>
   </div>
 
   <div class="field">

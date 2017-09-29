@@ -1,10 +1,15 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, only: [:edit, :update, :destroy]
 
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    if user_signed_in?
+      @books = Book.for_last_period.visible_for_user(current_user.id)
+    else
+      @books = Book.for_last_period.visible_for_guest
+    end
   end
 
   # GET /books/1
@@ -14,6 +19,10 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
+    unless user_signed_in?
+      flash[:notice] = t('books.message.access.error')
+      redirect_to root_path
+    end
     @book = Book.new
   end
 
@@ -71,4 +80,12 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:title, :user_id, :image, :summary, :draft, { genre_ids: [] })
     end
+
+    def require_user
+      return if user_signed_in? && @book.owner_book?(current_user.id)
+
+      flash[:notice] = t('books.message.access.error')
+      redirect_to root_path
+    end
+
 end

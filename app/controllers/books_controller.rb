@@ -6,9 +6,15 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     if user_signed_in?
-      @books = Book.for_last_period.visible_for_user(current_user.id)
+      @books = Book.for_last_period
+                   .visible_for_user(current_user.id)
+                   .page(params[:page])
+                   .per(5)
     else
-      @books = Book.for_last_period.visible_for_guest
+      @books = Book.for_last_period
+                   .visible_for_guest
+                   .page(params[:page])
+                   .per(5)
     end
   end
 

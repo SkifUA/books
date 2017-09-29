@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Books</h1>
-
+<%= paginate @books %>
 <table>
   <thead>
     <tr>
@@ -37,3 +37,4 @@
 <br>
 
 <%= link_to 'New Book', new_book_path %>
+<%= paginate @books %>

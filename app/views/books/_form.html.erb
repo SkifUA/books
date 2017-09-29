@@ -32,6 +32,19 @@
   </div>
 
   <div class="field">
+    <div class="field_head">Genre</div>
+    <%= hidden_field_tag("book[genre_ids][]", nil) %>
+    <% Genre.all.each do |genre| %>
+        <label><%= check_box_tag("book[genre_ids][]", genre.id, genre.id.in?(book.genres.collect(&:id))) %> <%= genre.name %></label>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= form.label :summary %>
+    <%= form.text_area :summary, id: :book_summary %>
+  </div>
+
+  <div class="field">
     <%= form.label :draft %>
     <%= form.check_box :draft, id: :book_draft %>
   </div>

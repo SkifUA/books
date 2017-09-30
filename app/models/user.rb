@@ -4,4 +4,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  before_destroy :admin_protection
+
+  private
+
+  def admin_protection
+    throw(:abort) if self.admin?
+  end
 end

@@ -2,6 +2,8 @@ class Book < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :genres
 
+  mount_uploader :image, BookUploader
+
   PERIOD_SIZE = 7
 
   scope :visible_for_user, -> (user_id) { where.not('user_id <> ? AND draft = true', user_id) }

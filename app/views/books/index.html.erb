@@ -21,7 +21,7 @@
       <tr>
         <td><%= book.title %></td>
         <td><%= book.author %></td>
-        <td><%= book.image %></td>
+        <td><%= image_tag book_img(book.image, 'thumb') %></td>
         <td><%= book.summary %></td>
         <td><%= genres_to_string(book.genres) %></td>
         <td><%= book.user.name %></td>

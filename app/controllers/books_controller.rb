@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, only: [:new, :edit, :update, :destroy]
+  before_action :require_user, only: [:edit, :update, :destroy]
 
   # GET /books
   # GET /books.json
@@ -25,6 +25,10 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
+    unless user_signed_in?
+      flash[:notice] = t('books.message.access.error')
+      redirect_to root_path and return
+    end
     @book = Book.new
     @book.user_id = current_user.id
   end

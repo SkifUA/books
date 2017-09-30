@@ -3,11 +3,20 @@
 class BookUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
+  SIZE_MAIN = {
+      height: 600,
+      width: 400
+  }
 
-  process resize_to_fit: [600, 400]
+  SIZE_THUMB = {
+      height: 60,
+      width: 40
+  }
+
+  process resize_to_fit: [SIZE_MAIN[:height], SIZE_MAIN[:width]]
 
   version :thumb do
-    process resize_to_fill: [60, 40]
+    process resize_to_fill: [SIZE_THUMB[:height], SIZE_THUMB[:width]]
   end
 
   # Include RMagick or MiniMagick support:

@@ -9,9 +9,9 @@ module BooksHelper
 
   def book_img(img, type='main')
     if type == 'thumb'
-      img.model.image? ? img : image_generator(height: '60', width: '40')
+      img.model.image? ? img : image_generator(height: BookUploader::SIZE_THUMB[:height],  width: BookUploader::SIZE_THUMB[:width])
     else
-      img.model.image? ? img : image_generator(height: '600', width: '400')
+      img.model.image? ? img : image_generator(height: BookUploader::SIZE_MAIN[:height], width: BookUploader::SIZE_MAIN[:width])
     end
   end
 end

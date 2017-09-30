@@ -30,6 +30,7 @@ class BooksController < ApplicationController
       redirect_to root_path
     end
     @book = Book.new
+    @book.user_id = current_user.id
   end
 
   # GET /books/1/edit

@@ -10,21 +10,9 @@
           <%= link_to "Home", root_path, class: 'nav-link' %>
         </li>
         <% if user_signed_in? %>
-            <% if current_user.admin? %>
-                <li class="nav-item">
-                  <%= link_to "Admin", rails_admin_path, class: 'nav-link' %>
-                </li>
-            <% end %>
-          <li class="nav-item">
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link' %>
-          </li>
+          <%= render 'nav_user_links' %>
         <% else %>
-          <li class="nav-item">
-            <%= link_to "Sign up", new_user_registration_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: 'nav-link' %>
-          </li>
+          <%= render 'nav_guest_links' %>
         <% end %>
       </ul>
     </div>

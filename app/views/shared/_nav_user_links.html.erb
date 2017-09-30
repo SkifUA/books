@@ -1,0 +1,15 @@
+<% if current_user.admin? %>
+  <li class="nav-item">
+    <%= link_to "Admin", rails_admin_path, class: 'nav-link' %>
+  </li>
+<% end %>
+<li class="nav-item">
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+</li>
+
+<li class="nav-item">
+  <%= link_to edit_user_registration_path, class: "nav-link" do %>
+      <%= fa_icon('user') %>
+      <%= current_user.name %>
+  <% end %>
+</li>

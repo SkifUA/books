@@ -8,11 +8,13 @@ class BooksController < ApplicationController
     if user_signed_in?
       @books = Book.for_last_period
                    .visible_for_user(current_user.id)
+                   .order_by_young
                    .page(params[:page])
                    .per(6)
     else
       @books = Book.for_last_period
                    .visible_for_guest
+                   .order_by_young
                    .page(params[:page])
                    .per(6)
     end

@@ -6,11 +6,12 @@ class Book < ApplicationRecord
 
   mount_uploader :image, BookUploader
 
-  PERIOD_SIZE = 7
+  LAST_PERIOD_SIZE = 7
 
   scope :visible_for_user, -> (user_id) { where.not('user_id <> ? AND draft = true', user_id) }
   scope :visible_for_guest, -> () { where.not(draft: true) }
-  scope :for_last_period, -> () { where(created_at: (Time.now - PERIOD_SIZE.day)..Time.now) }
+  scope :for_last_period, -> () { where(created_at: (Time.now - LAST_PERIOD_SIZE.day)..Time.now) }
+  scope :order_by_young, -> () { order(created_at: :desc) }
 
   def owner_book?(user_id)
     self.user_id == user_id

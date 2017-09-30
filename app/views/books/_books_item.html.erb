@@ -1,0 +1,19 @@
+<div class="col-lg-4 col-sm-6 portfolio-item">
+  <div class="card h-100">
+
+    <%= link_to book_path(book) do %>
+      <%= image_tag book_img(book.image.thumb, 'thumb'), class: 'card-img-top', width: '100' %>
+    <% end %>
+    <div class="card-body">
+      <h4 class="card-title">
+        <%= link_to book_path(book) do %>
+          <%= book.title %>
+        <% end %>
+      </h4>
+      <h6 class="card-title">
+          <b><%= book.author %></b>
+      </h6>
+      <p class="card-text"><%= book.title %></p>
+    </div>
+  </div>
+</div>

@@ -4,13 +4,13 @@ class BookUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::MiniMagick
   SIZE_MAIN = {
-      height: 600,
+      height: 700,
       width: 400
   }
 
   SIZE_THUMB = {
-      height: 60,
-      width: 40
+      height: 350,
+      width: 200
   }
 
   process resize_to_fit: [SIZE_MAIN[:height], SIZE_MAIN[:width]]

@@ -54,3 +54,23 @@ body {
 .icon-book-edit {
   margin-right: 4px;
 }
+
+// devise
+
+.login > .card {
+  width: 22rem;
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
+}
+
+.auth-links a {
+  color: black;
+}
+
+.card-block {
+  color: black;
+  text-align: left;
+  padding: 1rem;
+  z-index: 100;
+}

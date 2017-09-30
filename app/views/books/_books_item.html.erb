@@ -15,5 +15,12 @@
       </h6>
       <p class="card-text"><%= book.title %></p>
     </div>
+
+    <% if user_signed_in? && book.owner_book?(current_user.id) %>
+      <div  class="icon-book-edit text-right">
+        <%= link_to fa_icon('pencil-square-o'), edit_book_path(book) %>
+      </div>
+    <% end %>
+
   </div>
 </div>

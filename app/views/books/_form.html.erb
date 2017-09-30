@@ -10,47 +10,48 @@
       </ul>
     </div>
   <% end %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= form.hidden_field :user_id, id: :book_user_id %>
+        <div class="form-group">
+          <%= form.label :title %>
+          <%= form.text_field :title, id: :book_title, class: 'form-control' %>
+        </div>
 
-    <%= form.hidden_field :user_id, id: :book_user_id %>
+        <div class="form-group">
+          <%= form.label :author %>
+          <%= form.text_field :author, id: :book_author, class: 'form-control' %>
+        </div>
 
-    <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :book_title %>
-  </div>
+        <div class="form-group">
+          <label class="btn btn-primary">
+            <%= form.file_field :image, id: :book_image %>
+          </label>
+        </div>
 
-  <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author, id: :book_author %>
-  </div>
+        <div class="form-group">
+          <div class="form-group_head">Genre</div>
+          <%= hidden_field_tag("book[genre_ids][]", nil) %>
+          <% Genre.all.each do |genre| %>
+              <label><%= check_box_tag("book[genre_ids][]", genre.id, genre.id.in?(book.genres.collect(&:id))) %> <%= genre.name %></label>
+          <% end %>
+        </div>
 
-  <div class="field">
-    <%= form.file_field :image, id: :book_image %>
-  </div>
+        <div class="form-group">
+          <%= form.label :draft %>
+          <%= form.check_box :draft, id: :book_draft %>
+        </div>
+      </div>
 
-  <div class="field">
-    <%= form.label :summary %>
-    <%= form.text_area :summary, id: :book_summary %>
-  </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= form.label :summary %>
+          <%= form.text_area :summary, id: :book_summary, rows: 14, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
 
-  <div class="field">
-    <div class="field_head">Genre</div>
-    <%= hidden_field_tag("book[genre_ids][]", nil) %>
-    <% Genre.all.each do |genre| %>
-        <label><%= check_box_tag("book[genre_ids][]", genre.id, genre.id.in?(book.genres.collect(&:id))) %> <%= genre.name %></label>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= form.label :summary %>
-    <%= form.text_area :summary, id: :book_summary %>
-  </div>
-
-  <div class="field">
-    <%= form.label :draft %>
-    <%= form.check_box :draft, id: :book_draft %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+      <div class="form-btn-book">
+        <%= form.submit 'Save Book', class: 'btn btn-primary btn-block' %>
+      </div>
 <% end %>

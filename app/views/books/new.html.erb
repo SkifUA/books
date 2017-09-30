@@ -1,5 +1,11 @@
+<div class="container book-container">
 <h1>New Book</h1>
 
 <%= render 'form', book: @book %>
 
-<%= link_to 'Back', books_path %>
+  <%= link_to 'Back',
+              books_path,
+              type: 'button',
+              class: 'btn btn-secondary btn-group-book'
+  %>
+</div>

@@ -45,9 +45,9 @@ body {
   margin: 10px;
 }
 
-.btn {
+.btn, .btn:hover {
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .icon-book-edit {

@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, only: [:edit, :update, :destroy]
+  before_action :require_user, only: [:new, :edit, :update, :destroy]
 
   # GET /books
   # GET /books.json
@@ -9,12 +9,12 @@ class BooksController < ApplicationController
       @books = Book.for_last_period
                    .visible_for_user(current_user.id)
                    .page(params[:page])
-                   .per(5)
+                   .per(6)
     else
       @books = Book.for_last_period
                    .visible_for_guest
                    .page(params[:page])
-                   .per(5)
+                   .per(6)
     end
   end
 
@@ -25,10 +25,6 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
-    unless user_signed_in?
-      flash[:notice] = t('books.message.access.error')
-      redirect_to root_path
-    end
     @book = Book.new
     @book.user_id = current_user.id
   end

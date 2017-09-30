@@ -2,6 +2,8 @@ class Book < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :genres
 
+  validates_presence_of :title, :author, :summary
+
   mount_uploader :image, BookUploader
 
   PERIOD_SIZE = 7

@@ -1,40 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="container book-container">
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-md-7">
+      <%= image_tag book_img(@book.image, 'main'), width: '100%' %>
+    </div>
+    <div class="col-md-5">
+      <h4>
+        <strong><%= @book.title %></strong>
+      </h4>
 
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
+      <h6>
+        <strong><%= @book.author %></strong>
+      </h6>
 
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
+      <p>
+        <strong>Genre:</strong>
+        <%= genres_to_string @book.genres %>
+      </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag book_img(@book.image) %>
-</p>
+      <p>
+        <strong>Summary:</strong>
+        <%= @book.summary %>
+      </p>
 
-<p>
-  <strong>Summary:</strong>
-  <%= @book.summary %>
-</p>
-
-<p>
-  <strong>Genre:</strong>
-  <%= genres_to_string @book.genres %>
-</p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= @book.user.name %>
-</p>
-
-
-<p>
-  <strong>Draft:</strong>
-  <%= @book.draft %>
-</p>
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+    </div>
+  </div>
+  <div class="btn-group">
+    <%= link_to 'Edit',
+                edit_book_path(@book),
+                type: 'button',
+                class: 'btn btn-primary btn-group-book'
+    %>
+    <%= link_to 'Back',
+                books_path,
+                type: 'button',
+                class: 'btn btn-default btn-group-book'
+    %>
+  </div>
+</div>

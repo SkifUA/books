@@ -62,3 +62,5 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'gritter', '~> 1.2'
 gem 'dotenv-rails', '~> 2.2', '>= 2.2.1'
 gem 'rails_admin', '~> 1.2'
+
+ruby "2.4.0"

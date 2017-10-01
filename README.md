@@ -13,6 +13,7 @@ Test Website
 - only an authenticated user can add a new book
 - user can edit self books
 - show draft-book only owner
+- upload image (carrierwave-aws)
 - admin dashboard (rails_admin)
 - tests (rspec)
 

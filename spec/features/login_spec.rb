@@ -12,7 +12,8 @@ feature "Login" do
     fill_in "Email", with: "user@example.com"
     fill_in "Password", with: "111111"
     click_button "Log in"
-    expect(page).to have_text('New Book')
+
+    expect(page).to have_text('Logout')
   end
 
 end

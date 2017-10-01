@@ -7,13 +7,13 @@ Test Website
 * Rails 5.1.4
 
 * Implemented: 
-- list of books including: title, author, image, genre, summary
+- list of books including: title, author, image, genres, summary
 - authentication (devise), forgot password
-- show all books by last week
-- can added new book only authenticated user
+- show all books added for a week
+- only an authenticated user can add a new book
 - user can edit self books
 - show draft-book only owner
-- admin (rails_admin)
+- admin dashboard (rails_admin)
 - tests (rspec)
 
 * Database creation

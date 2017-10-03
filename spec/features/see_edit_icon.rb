@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "See_Edit_Icon" do
+feature "SeeEditIcon" do
 
   let!(:user1) { create :user }
   let!(:user2) { create :user, email: 'user2@example.com' }
@@ -22,5 +22,4 @@ feature "See_Edit_Icon" do
 
     expect(page).not_to have_css( 'i', class:'fa fa-pencil-square-o')
   end
-
 end

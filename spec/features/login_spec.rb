@@ -6,7 +6,6 @@ feature "Login" do
   before(:each) { user.save }
 
   scenario "User can't create New Book" do
-
     visit "/"
 
     page.find('a', text: 'New Book').click
@@ -15,7 +14,6 @@ feature "Login" do
   end
 
   scenario "User login" do
-
     visit "/users/sign_in"
 
     fill_in "Email", with: "user@example.com"
@@ -24,5 +22,4 @@ feature "Login" do
 
     expect(page).to have_text('Logout')
   end
-
 end

@@ -4,9 +4,7 @@ feature "CreateBook" do
 
   let!(:user) { create :user }
 
-
   scenario "Create Book" do
-
     login_as(user, scope: :user)
     visit "/books/new"
 
@@ -20,5 +18,4 @@ feature "CreateBook" do
     expect(page).not_to have_text('Save Book')
     expect(page).to have_text('Book created by test')
   end
-
 end

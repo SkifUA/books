@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "See_Admin" do
+feature "SeeAdmin" do
 
   let!(:user) { create :user, admin: false }
 
@@ -30,5 +30,4 @@ feature "See_Admin" do
     expect(page).not_to have_text('Site Administration')
     expect(page).to have_text('Books')
   end
-
 end

@@ -5,6 +5,15 @@ feature "Login" do
   let!(:user) { build :user }
   before(:each) { user.save }
 
+  scenario "User can't create New Book" do
+
+    visit "/"
+
+    page.find('a', text: 'New Book').click
+
+    expect(page).not_to have_css( 'form', id:'form-book')
+  end
+
   scenario "User login" do
 
     visit "/users/sign_in"

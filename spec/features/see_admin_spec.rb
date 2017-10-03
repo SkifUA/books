@@ -1,17 +1,15 @@
 require 'rails_helper'
 
-feature "Login" do
+feature "See_Admin" do
 
-  let!(:user) { build :user }
-  before(:each) { user.save }
+  let!(:user) { create :user }
 
   scenario "See admin" do
 
-    visit "/users/sign_in"
+    login_as(user, scope: :user)
 
-    fill_in "Email", with: "user@example.com"
-    fill_in "Password", with: "111111"
-    click_button "Log in"
+    visit "/"
+
     page.find('a', text: 'Admin').click
     expect(page).to have_text('Site Administration')
   end

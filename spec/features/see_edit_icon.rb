@@ -1,21 +1,15 @@
 require 'rails_helper'
 
-feature "Login" do
+feature "See_Edit_Icon" do
 
-  let!(:user1) { build :user }
-  let!(:user2) { build :user, email: 'user2@example.com' }
-  let!(:book) { build :book, user: user1}
+  let!(:user1) { create :user }
+  let!(:user2) { create :user, email: 'user2@example.com' }
+  let!(:book) { create :book, user: user1}
 
-  before(:each) { user1.save }
 
   scenario "See edit icon" do
-    book.save
-
-    visit "/users/sign_in"
-
-    fill_in "Email", with: "user@example.com"
-    fill_in "Password", with: "111111"
-    click_button "Log in"
+    login_as(user1, scope: :user)
+    visit "/"
 
     expect(page).to have_css( 'i', class:'fa fa-pencil-square-o')
   end
@@ -24,11 +18,8 @@ feature "Login" do
     book.user = user2
     book.save
 
-    visit "/users/sign_in"
-
-    fill_in "Email", with: "user@example.com"
-    fill_in "Password", with: "111111"
-    click_button "Log in"
+    login_as(user1, scope: :user)
+    visit "/"
 
     expect(page).not_to have_css( 'i', class:'fa fa-pencil-square-o')
   end

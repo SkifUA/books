@@ -6,7 +6,6 @@ feature "See_Edit_Icon" do
   let!(:user2) { create :user, email: 'user2@example.com' }
   let!(:book) { create :book, user: user1}
 
-
   scenario "See edit icon" do
     login_as(user1, scope: :user)
     visit "/"
